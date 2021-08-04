@@ -1,0 +1,393 @@
+/**
+ *
+ * Main css file
+ * All Golbal css here
+**/
+
+* {
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
+}
+:not(:defined) {
+  display: none;
+}
+a {
+  color: rgb(99,165,254)
+}
+
+body {
+  padding: 0 0;
+  margin: 0;
+}
+html , body {
+  height: 100vh;
+  overflow: hidden;
+  background: #101D24;
+}
+
+.incoming::before {
+  content: "\f061";
+  color: green;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 600;
+  display: inline-block;
+  margin-inline: 3px;
+  transform: rotate(135deg);
+}
+.outgoing::before {
+  content: "\f061";
+  color: rgb(249,55,55);
+  font-family: "Font Awesome 5 Free";
+  font-weight: 600;
+  display: inline-block;
+  margin-inline: 3px;
+  transform: rotate(-45deg);
+}
+
+page-fragment {
+  visibility: hidden;
+  opacity: 0;
+  transform-origin: top;
+  transform: translateY(50px) scale(0.9);
+  transition: all 0.2s ease-out;
+}
+
+.open-fragment {
+  transform: translateY(0px)  scale(1);
+  opacity: 1;
+  visibility: visible;
+}
+
+
+#chat , #call {
+  z-index: 300;
+}
+
+.modal {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  height: 100vh;
+  overflow-y: scroll;
+  width: 100%;
+  background: rgba(0,0,0,0.3);
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.2s ease-in;
+  z-index: 500;
+}
+
+.grid-centered {
+  display: grid;
+  place-content: center;
+}
+.modal-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+messenger-element {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  visibility: hidden;
+  opacity: 0;
+  transform-origin: top;
+  transform: translateY(50px) scale(0.9);
+  transition: all 0.2s ease-in-out;
+}
+
+.open-messenger {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0px) scale(1);
+}
+
+
+/* Settings page */
+
+.profile {
+  display: flex;
+  width: 100%;
+  padding: 25px 15px;
+  align-items: center;
+  gap: 20px;
+  border-bottom: 1.1px solid #565E61;
+}
+.userImg {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: grey;
+  flex-shrink: 0;
+}
+
+.userImg > img {
+  object-fit: cover;
+}
+
+.user-detail > * {
+  display: block;
+}
+
+.user-detail {
+  color: white;
+}
+.user-name {
+  font-size: 1.2em
+}
+.user-status {
+  margin-top: 4px;
+  color: silver;
+  font-size: 0.9em;
+}
+.settings-otps > div {
+  display: flex;
+  color: #D2D6D9;
+  padding: 20px 15px;
+  padding-left: 40px;
+  gap: 30px;
+  align-items: center;
+}
+.settings-otps > div:last-child {
+  position: relative;
+}
+.settings-otps > div:last-child:after {
+  content: "";
+  display: block;
+  background: #565E61;
+  width: 78%;
+  left: 0;
+  margin-left: 22%;
+  height: 0.5px;
+  bottom: 0;
+  position: absolute;
+}
+.settings-otps .opt-type > * {
+  display: block;
+}
+.opt-type .heading {
+  margin-bottom: 8px;
+  font-size: 1.05em;
+}
+.opt-type .sub-heading {
+  font-size: 0.85em;
+  color: #959DA0;
+}
+.fa-key {
+  transform: rotate(-45deg);
+}
+.icon {
+  font-size: 1.2em;
+}
+.credits {
+  display: block;
+  width: 100%;
+  text-align: center;
+  color: white;
+  padding: 20px 0px;
+  margin-top: 30px
+}
+.credits span {
+  display: block;
+}
+.from {
+  color: #565E61;
+  font-size: 0.9em
+}
+.app-credits {
+  margin-top: 10px;
+  font-weight: 900;
+  font-stretch: expanded;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: white
+}
+
+app-main {
+  position: fixed;
+  top: 0;
+  display: block;
+  width: 100%;
+  height: 100vh;
+  transform: translateX(100%);
+  transition: transform 0.4s ease;
+}
+
+#initial {
+  height: 100vh;
+  width: 100%;
+  background: black;
+  overflow:hidden;
+  transform: translateX(-100%);
+  transition: transform 0.4s ease;
+}
+.success {
+  transform: translateX(0%)!important;
+}
+
+.main-logo {
+  width: 200px;
+  aspect-ratio: 1;
+  color: white;
+  letter-spacing: 1.5px;
+  transition: 0.5s ease;
+}
+.main-logo img {
+  object-fit: contain;
+}
+.chatty {
+  display: grid;
+  place-content: center;
+  text-align: center;
+  background: rgb(16,29,36);
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  visibility: hidden;
+  transition: transform 0.4s ease;
+  transform: translateX(-100%);
+}
+.initial-route {
+  transform: translateX(0%);
+  visibility: visible;
+}
+.main-logo > h2 {
+  transform: translateY(-30px);
+}
+.loader {
+  font-size: 2.5em;
+  color: white;
+  opacity: 0;
+  visibility: none;
+  transition-delay: 0.5s;
+  transition: all 0.5s ease;
+}
+.fade-in {
+  visibility: visible;
+  opacity: 1;
+}
+.move {
+  transform: translateY(-20%)
+}
+.voice-call-ui {
+  background: #4ECDC4;
+  background: -webkit-linear-gradient(toright,#101D24, #4ECDC4);
+  background: linear-gradient(toright,#101D24, #4ECDC4);
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  color: white;
+  padding: 10px;
+  isolation: isolate;
+  text-align: center;
+  transform: translateY(-150vh);
+  transition: all 0.2s ease;
+  display: none;
+}
+.video-call-ui {
+  background: #4ECDC4;
+  background: -webkit-linear-gradient(toright,#101D24, #4ECDC4);
+  background: linear-gradient(toright,#101D24, #4ECDC4);
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  color: white;
+  padding: 10px;
+  isolation: isolate;
+  text-align: center;
+  transform: translateY(-150vh);
+  transition: all 0.2s ease;
+  display:none;
+}
+.buttons {
+  position: absolute;
+  top: 70vh;
+  width: 100%;
+  left: 0;
+  display: flex;
+  gap: 20vw
+}
+.buttons > * {
+  flex-basis: 100%;
+  text-align: center;
+}
+.buttons button {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  font-size: 1.2em;
+  border: none;
+}
+.call-type {
+  text-align: center;
+  padding: 15px 0px;
+}
+.caller-image {
+  width: 100%;
+  padding: 45px 0;
+}
+.caller-image img {
+  width: 140px;
+  height: 140px;
+  overflow: hidden;
+  background: #353535;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.caller-name {
+  font-size: 1.2em;
+  transform: translateY(-15px);
+}
+.red {
+  background: red;
+  color: white;
+  transform: rotate(-135deg);
+}
+.green {
+  background: green;
+  color: white;
+  transform: rotate(90deg);
+}
+@media screen  and (min-height: 400px) {
+  .buttons {
+    top: 82vh;
+  }
+}
+.voice-cover,
+.video-cover {
+  position: fixed;
+  z-index: -1;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(4px);
+}
+.picked {
+  transform: translate(0);
+}
+#local {
+  background: #454545;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 130px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 5px;
+  transform: translate(20px , 20px);
+  z-index: 1;
+  display: none;
+}
+#remote {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  inset: 0;
+  z-index: -1;
+  object-fit: cover;
+  display: none;
+}
