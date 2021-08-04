@@ -1,0 +1,9 @@
+User-agent: googlebot-image
+Disallow: /src/img/
+
+User-agent: googlebot
+Disallow: /src/img/
+
+
+User-agent: anothercrawler
+Disallow: /

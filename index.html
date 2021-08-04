@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Meta Tags -->
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width , initial-scale=1.0">
+  <meta name="theme-color" content="#101D24">
+  <meta name="apple-mobile-web-app-title" content="Chatty">
+  <meta name="application-name" content="Chatty">
+  <meta name="msapplication-TileColor" content="#101d24">
+  <meta name="description" content="Quickly send ,  receive messages  , make calls and much more ... Chatty gives you the power of web to the fullest.....">
+  <meta name="keywords" content="chatty , messenger , whatsapp , messaging ">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+
+
+  <title>Chatty</title>
+
+  <!-- Icons, -->
+  <link rel="apple-touch-icon" sizes="180x180" href="./favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./favicons/favicon-16x16.png">
+  <link rel="mask-icon" href="./favicons/safari-pinned-tab.svg" color="#101d24">
+
+
+
+  <!-- CSS and Fonts -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Roboto:wght@300&display=swap" rel="stylesheet">
+
+  <!-- FontAwsome icons  CSS and JavaScript -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" type="text/css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/regular.min.js" type="text/javascript" charset="utf-8"></script>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="./src/css/main.css" type="text/css" media="all" />
+
+  <!-- PWA installation Script -->
+  <link rel="manifest" href="./manifest.json">
+  <script type="text/javascript" charset="utf-8">
+    //if browser support service worker
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js');
+    };
+  </script>
+</head>
+<body>
+
+
+  <!-- Calling Modals -->
+  <div class="voice-call-ui">
+    <div class="voice-cover"></div>
+    <div id="voice-call-text" class="call-type">
+      Incoming call
+    </div>
+    <div class="caller-image">
+      <img class="" src="src/img/dp.png" alt="" />
+    </div>
+    <div class="caller-name">
+      Sanmeet Singh
+    </div>
+    <div class="buttons">
+      <div id="answer">
+        <button class="green" onclick="pickUpVoiceCall()"><i class="fas fa-phone"></i></button>
+      </div>
+      <div id="end">
+        <button onclick="endVoiceCall()" class="red"><i class="fas fa-phone"></i></button>
+      </div>
+    </div>
+  </div>
+  <div class="video-call-ui">
+    <div class="video-cover"></div>
+
+    <div id="video-call-text" class="call-type">
+      Incoming video call
+    </div>
+    <div class="caller-image video-info">
+      <img class="" src="src/img/dp.png" alt="" />
+    </div>
+    <div class="caller-name video-info">
+      Sanmeet Singh
+    </div>
+    <div class="video-call-div">
+      <video id="remote" autoplay="autoplay"></video>
+      <video id="local" autoplay="autoplay"></video>
+    </div>
+    <div class="buttons">
+      <div id="answerVideo">
+        <button class="green" onclick="pickUpVideoCall()"><i class="fas fa-phone"></i></button>
+      </div>
+      <div id="endVideo">
+        <button onclick="endVideoCall()" class="red"><i class="fas fa-phone"></i></button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Modals -->
+  <dp-modal
+    src="src/img/person.png"
+    name="Sanmeet Singh"
+    class="modal grid-centered">
+  </dp-modal>
+
+  <!-- Splash Screen -->
+  <div class="chatty initial-route">
+    <div class="main-logo">
+      <img class="box" src="./favicons/logo.svg" alt="" width="100%" height="100%" />
+      <h2>Chatty</h2>
+    </div>
+    <div class="loader">
+      <i class="fas fa-circle-notch fa-spin"></i>
+    </div>
+  </div>
+
+  <!-- Login/Sign-up screen -->
+  <div id="initial" class="success">
+    <login-signup current="login"></login-signup>
+  </div>
+
+  <!-- Main app Element -->
+  <app-main current="chat"></app-main>
+
+  <!-- Messenger elements -->
+  <div id="allMessengers"></div>
+
+  <!-- Page fragments -->
+
+  <!-- Settings Screen -->
+  <page-fragment id="settings">
+    <span slot="name">Settings</span>
+    <div slot="page-content">
+      <div class="profile" onclick="openFragment('profile')">
+        <div class="userImg">
+          <img src="src/img/person.png" alt="" width="100%" height="100%" />
+        </div>
+
+        <div class="user-detail">
+          <span class="user-name"></span>
+          <span class="user-status"></span>
+        </div>
+      </div>
+      <div class="settings-otps">
+        <div>
+          <div class="icon">
+            <i class="fas fa-key"></i>
+          </div>
+          <div class="opt-type">
+            <span class="heading">Account</span>
+            <span class="sub-heading">Privacy , security , change</span>
+          </div>
+        </div>
+        <div>
+          <div class="icon">
+            <i class="fas fa-comment-alt"></i>
+          </div>
+          <div class="opt-type">
+            <span class="heading">Chats</span>
+            <span class="sub-heading">Privacy , security , change</span>
+          </div>
+        </div>
+        <div>
+          <div class="icon">
+            <i class="fas fa-question-circle"></i>
+          </div>
+          <div class="opt-type">
+            <span class="heading">Help</span>
+            <span class="sub-heading">Privacy , security , change</span>
+          </div>
+        </div>
+      </div>
+      <div class="credits">
+        <span class="from">from</span>
+        <span class="app-credits">Sanmeet</span>
+      </div>
+    </div>
+  </page-fragment>
+
+  <!-- Profile Screen -->
+  <page-fragment id="profile">
+    <span slot="name">Profile</span>
+    <div slot="page-content">
+      <profile-element src="./src/img/person.png"></profile-element>
+    </div>
+  </page-fragment>
+
+  <!-- Calls List -->
+  <page-fragment id="calls">
+    <span slot="name">Calls</span>
+    <div slot="page-content"></div>
+  </page-fragment>
+
+  <!-- Chats List -->
+  <page-fragment id="chats">
+    <span slot="name">Chats</span>
+    <div slot="page-content">
+      <button onclick="signIn('ssanmeet123@gmail.com','sanmeet1')"> Login as ssanmeet123@gmail.com </button>
+    </div>
+  </page-fragment>
+
+  <!-- Import Elements -->
+  <script src="./src/js/modules.js" type='module' charset="utf-8" defer></script>
+  <!-- Functional Script -->
+  <script src="./src/js/main.js" type="text/javascript" charset="utf-8" defer></script>
+
+  <!-- Firebase Script -->
+  <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-storage.js"></script>
+
+  <!-- Firebase Setup -->
+  <script>
+
+    var firebaseConfig = {
+      apiKey: "AIzaSyDBJa_1sDOvBVnXAb-YsAr9qfgJB2LbUZs",
+      authDomain: "chatapplication-4b635.firebaseapp.com",
+      projectId: "chatapplication-4b635",
+      storageBucket: "chatapplication-4b635.appspot.com",
+      messagingSenderId: "938236047580",
+      appId: "1:938236047580:web:f716146f5e1c8a8eef4419"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    const db = firebase.firestore();
+    const rtdb = firebase.database()
+    const auth = firebase.auth();
+
+    db.settings({
+      timestampsInSnapshots: true,
+      merge: true
+    });
+
+    const storage = firebase.storage().ref();
+  </script>
+  <!-- Main Script-->
+
+  <script src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js"></script>
+  <script src="./src/js/app.js" type="application/javascript" charset="utf-8"></script>
+</body>
+</html>
