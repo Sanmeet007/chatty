@@ -583,7 +583,7 @@ function sendAttachments(to ,files, obj) {
   let date = new Date();
   date = date.getTime();
 
-  files.forEach(
+  Array.from(files).forEach(
     (file,
       index) => {
       let fname = file.name;
