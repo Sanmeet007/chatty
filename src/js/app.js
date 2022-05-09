@@ -1035,6 +1035,7 @@ function accessCall(callType , call , secondUserId , roomId) {
 
 
     function placeNewPhoneCall(to) {
+      callUi.style.display = "block";
       voiceCallText.style.color = "white";
       btnDiv.style.display = "flex";
       answerBtn.style.display = "none";
@@ -1047,6 +1048,7 @@ function accessCall(callType , call , secondUserId , roomId) {
     }
 
     function placeNewVideoCall(to) {
+      videoCallDiv.style.display = "block";
       videoCallDiv.classList.add('picked')
       videoAnswerBtn.style.display = "none";
       videoInfo.forEach(item => {
